@@ -1,9 +1,11 @@
-// require('jasmine-jquery');
+
 var req = require('request');
-var todoApp = require('../server.js');
+var todoApp = require('../../server.js');
 var base_url = 'http://localhost:8080/';
 
+
 describe('Todo App', function() {
+  });
      describe('GET /', function() {
          it('returns status code 200', function(end) {
              req.get(base_url, function(error, response, body) {
