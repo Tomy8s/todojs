@@ -38,8 +38,21 @@ module.exports = function(app) {
 
   });
 
+// mark todo as done
   app.put('/api/todos/:todo_id', function(req, res) {
-    Todo
+    Todo.findOneAndUpdate(
+      {_id: req.params.todo_id},
+      { done: true },
+      function(err, todo) {
+          if (err)
+              res.send(err);
+
+          Todo.find(function(err, todos) {
+              if (err)
+                  res.send(err);
+              res.json(todos);
+          });
+      });
   });
 
   // delete a todo
