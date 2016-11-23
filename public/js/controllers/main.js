@@ -32,7 +32,7 @@ angular.module('todoController', [])
            }
         };
 
-        // CREATE ==================================================================
+        // UPDATE ==================================================================
         $scope.changedoneTodo = function(id) {
           Todos.changeDone(id)
           // if successful creation, call our get function to get all the new todos
