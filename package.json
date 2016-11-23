@@ -16,9 +16,9 @@
     "request": "^2.79.0"
   },
   "devDependencies": {
-    "jasmine": "^2.5.2",
-    "jasmine-ajax": "^3.2.0",
-    "jasmine-jquery": "^2.1.1",
-    "nodemon": "^1.11.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "zombie": "^5.0.5"
   }
 }
