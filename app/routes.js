@@ -38,6 +38,10 @@ module.exports = function(app) {
 
   });
 
+  app.put('/api/todos/:todo_id', function(req, res) {
+    Todo
+  });
+
   // delete a todo
   app.delete('/api/todos/:todo_id', function(req, res) {
       Todo.remove({
