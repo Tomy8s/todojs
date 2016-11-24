@@ -7,9 +7,11 @@ var app = require('../server.js');
 var assert = require('assert');
 
 describe('toDoJS', function() {
-    before(function() {
+    before(function(done) {
         this.server = http.createServer(app).listen(8081);
         this.browser = new Browser({ site: 'http://localhost:8081' });
+        var browser = this.browser;
+        done();
     });
     before(function(done) {
         this.browser.visit('/', done);
@@ -22,7 +24,7 @@ describe('toDoJS', function() {
     });
 
     it('should display the app\'s name', function() {
-        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam ');
+        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam 6');
     });
 
     // it('should display a placeholder', function() {
@@ -38,11 +40,19 @@ describe('toDoJS', function() {
         }).then(done, done);
     });
 
+    it('should chaneg status from false to true when checkbox is checked', function(done) {
+        var browser = this.browser;
+        browser.check('#todo-list tr:last-child input');
+        browser.check('#todo-list tr:nth-child(2) input');
+        assert.equal(browser.text('#todo-list tr:last-child td:nth-child(2)'), 'true');
+        done();
+    });
+
 
     //Tests end
 
     after(function(done) {
-        this.browser.clickLink('Delete');
+        this.browser.clickLink('Delete').then(done);
     });
 
     after(function(done) {
