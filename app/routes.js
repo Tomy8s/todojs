@@ -1,6 +1,8 @@
 "use strict";
 
 var Todo = require('./models/todo');
+var Account = require('./models/account');
+var passport = require('passport');
 
 module.exports = function(app) {
 
@@ -72,6 +74,34 @@ module.exports = function(app) {
               res.json(todos);
           });
       });
+  });
+
+  app.get('/register', function(req, res) {
+    res.render('register', { });
+  });
+
+  app.post('/register', function(req, res) {
+    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+      if (err)
+          res.send(err);
+
+        passport.authenticate('local')(req, res, function () {
+            res.redirect('/');
+        });
+    });
+  });
+
+  app.get('/login', function(req, res) {
+    res.render('login', { user : req.user });
+  });
+
+  app.post('/login', passport.authenticate('local'), function(req, res) {
+    res.redirect('/');
+  });
+
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
   });
 
   // application -------------------------------------------------------------
