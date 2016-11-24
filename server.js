@@ -1,5 +1,7 @@
 // set up ========================
+require('zombie');
 require('dotenv').config();
+var http = require('http');
 var express  = require('express');
 var app      = express();                               // create our app w/ express
 var mongoose = require('mongoose');                     // mongoose for mongodb
@@ -27,5 +29,13 @@ require('./app/routes')(app);
 
 
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+// app.listen(8080);
+// console.log("App listening on port 8080");
+
+// setup for tests
+module.exports = app;
+if(!module.parent) {
+    http.createServer(app).listen(process.env.PORT, function() {
+        console.log('Server listening on port ' + process.env.PORT);
+    });
+}

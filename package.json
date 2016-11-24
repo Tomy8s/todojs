@@ -4,7 +4,7 @@
   "description": "Simple todo application.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -12,9 +12,13 @@
     "express": "^4.14.0",
     "method-override": "^2.3.7",
     "mongoose": "^4.6.8",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "request": "^2.79.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "zombie": "^5.0.5"
   }
 }
