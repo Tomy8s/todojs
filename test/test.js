@@ -22,11 +22,7 @@ describe('toDoJS', function() {
     });
 
     it('should display the app\'s name', function() {
-        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam');
-    });
-
-    after(function(done) {
-        this.browser.pressButton('Delete');
+        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam ');
     });
 
     // it('should display a placeholder', function() {
@@ -35,16 +31,23 @@ describe('toDoJS', function() {
 
     it('should allow a todo to be posted', function(done) {
         var browser = this.browser;
-        browser.fill('#todo-text-input', 'New Todo');
+        browser.fill('#todo-text-input', 'Todo Test');
         browser.pressButton('Add').then(function() {
           assert.ok(browser.success);
-          assert.equal(browser.text('#todo-list div div:last-child'), 'New Todo');
+          assert.equal(browser.text('#todo-list tr:last-child td:nth-child(3)'), 'Todo Test');
         }).then(done, done);
     });
 
 
     //Tests end
+
+    after(function(done) {
+        this.browser.clickLink('Delete');
+    });
+
     after(function(done) {
         this.server.close(done);
     });
+
+
 });
