@@ -38,12 +38,12 @@
                 <th>Task</th>
                 <th>Actions</th>
               </tr>
-              <tr ng-repeat="todo in todos">
+              <tr ng-repeat="todo in todos"  id="{{ todo._id }}">
                 <td>
                   <input type="checkbox" ng-model="todo.done" ng-click="changedoneTodo(todo._id)">
                 </td>
                 <td>
-                  <span>{{ todo.done }}</span>
+                  <span id="{{ todo._id }}-done">{{ todo.done }}</span>
                 </td>
                 <td>
                   <span>{{ todo.text }}</span>

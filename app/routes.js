@@ -42,19 +42,25 @@ module.exports = function(app) {
 
 // mark todo as done
   app.put('/api/todos/:todo_id', function(req, res) {
+      var pending = false;
+      var desiredStatus;
+      var currentStatus;
 
     Todo.findOne({_id: req.params.todo_id}, function(err,doc) {
       if (err)
           res.send(err);
-      doc.done = !doc.done;
+      desiredStatus = !doc.done;
+      currentStatus = doc.done;
+      doc.done = desiredStatus;
       doc.save();
     });
 
-    Todo.find(function(err, todos) {
-      if (err)
-          res.send(err);
-      res.json(todos);
-    });
+
+//     var updateAfterChange = Todo.find(function(err, todos) {
+//       if (err)
+//           res.send(err);
+//       res.json(todos);
+//     });
   });
 
   // delete a todo

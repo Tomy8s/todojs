@@ -39,6 +39,12 @@ angular.module('todoController', [])
           .success(function(data) {
               $scope.todos = data; // assign our new list of todos
           });
+          var done_field = $('#' + id + '-done');
+          if (done_field.innerHTML == 'false') {
+              done_field.innerHTML = 'true';
+          } else {
+              done_field.innerHTML = 'false';
+          }
         };
 
          // DELETE ==================================================================
