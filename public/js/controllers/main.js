@@ -30,7 +30,16 @@ angular.module('todoController', [])
                        $scope.todos = data; // assign our new list of todos
                    });
            }
-       };
+        };
+
+        // UPDATE ==================================================================
+        $scope.changedoneTodo = function(id) {
+          Todos.changeDone(id)
+          // if successful creation, call our get function to get all the new todos
+          .success(function(data) {
+              $scope.todos = data; // assign our new list of todos
+          });
+        };
 
          // DELETE ==================================================================
          // delete a todo after checking it

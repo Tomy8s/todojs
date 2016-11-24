@@ -1,3 +1,5 @@
+"use strict";
+
 var Todo = require('./models/todo');
 
 module.exports = function(app) {
@@ -36,6 +38,23 @@ module.exports = function(app) {
           });
       });
 
+  });
+
+// mark todo as done
+  app.put('/api/todos/:todo_id', function(req, res) {
+
+    Todo.findOne({_id: req.params.todo_id}, function(err,doc) {
+      if (err)
+          res.send(err);
+      doc.done = !doc.done;
+      doc.save();
+    });
+
+    Todo.find(function(err, todos) {
+      if (err)
+          res.send(err);
+      res.json(todos);
+    });
   });
 
   // delete a todo
