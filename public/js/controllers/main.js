@@ -41,9 +41,10 @@ angular.module('todoController', [])
           });
           var done_field = $('#' + id + '-done');
           if (done_field.innerHTML == 'false') {
-              done_field.innerHTML = 'true';
+              done_field.innerHTML = 'done';
           } else {
-              done_field.innerHTML = 'false';
+            console.log(id)
+              done_field.innerHTML = 'pending';
           }
         };
 

@@ -24,7 +24,7 @@ describe('toDoJS', function() {
     });
 
     it('should display the app\'s name', function() {
-        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam 6');
+        assert.equal(this.browser.text('h1'), 'MEANTeam\'s Vietnam');
     });
 
     // it('should display a placeholder', function() {
@@ -37,7 +37,8 @@ describe('toDoJS', function() {
         browser.pressButton('Add').then(function() {
           assert.ok(browser.success);
           assert.equal(browser.text('#todo-list tr:last-child td:nth-child(3)'), 'Todo Test');
-        }).then(done, done);
+        });
+        done();
     });
 
     it('should chaneg status from false to true when checkbox is checked', function(done) {

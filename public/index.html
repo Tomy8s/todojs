@@ -26,7 +26,8 @@
 
           <!-- HEADER AND TODO COUNT -->
           <div class="jumbotron text-center">
-              <h1>MEANTeam's Vietnam <span class="label label-info">{{ todos.length }}</span></h1>
+              <h1>MEANTeam's Vietnam </h1>
+              <p>You have <span id="num" class="label label-info">{{ todos.length }}</span> ToDos</p>
           </div>
 
           <!-- TODO LIST -->
@@ -43,10 +44,10 @@
                   <input type="checkbox" ng-model="todo.done" ng-click="changedoneTodo(todo._id)">
                 </td>
                 <td>
-                  <span id="{{ todo._id }}-done">{{ todo.done }}</span>
+                  <span id="{{ todo._id }}-done">{{ todo.done ? "done" : "pending" }}</span>
                 </td>
                 <td>
-                  <span>{{ todo.text }}</span>
+                  <span >{{ todo.text }}</span>
                 </td>
                 <td>
                   <a href="#" class="btn btn-danger" role="button" ng-click="deleteTodo(todo._id)">Delete</a>
