@@ -41,20 +41,14 @@ describe('toDoJS', function() {
         done();
     });
 
-    it('should chaneg status from false to true when checkbox is checked', function(done) {
+    it('should change status from false to true when checkbox is checked', function(done) {
         var browser = this.browser;
         browser.check('#todo-list tr:last-child input');
         browser.check('#todo-list tr:nth-child(2) input');
-        assert.equal(browser.text('#todo-list tr:last-child td:nth-child(2)'), 'true');
+        assert.equal(browser.text('#todo-list tr:last-child td:nth-child(2)'), 'done');
         done();
     });
 
-
-    //Tests end
-
-    after(function(done) {
-        this.browser.clickLink('Delete').then(done);
-    });
 
     after(function(done) {
         this.server.close(done);
